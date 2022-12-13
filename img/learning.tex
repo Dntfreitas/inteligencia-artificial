@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+\begin{axis}[ticks=none, domain=0:10]
+\addplot[TolDarkRed] {1.5*x};
+\addplot[TolDarkGreen] {2*x};
+\draw [thick,decoration={brace,mirror,raise=5pt},decorate,visible on=<2->] (axis cs:8,12.5) -- node[right=7pt] {$E$} (axis cs:8,16.5);
+\draw [<-] (axis cs:8.3,17)-- +(0pt, 15pt) node[left] {Valor esperado~($y$)};
+\draw [->] (axis cs:8.3,5)-- +(0pt, 45pt) node[below=50pt] {Valor calculado~($\hat{y}$)};
+\end{axis}
+\end{tikzpicture}

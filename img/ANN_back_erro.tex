@@ -1,0 +1,30 @@
+\begin{tikzpicture}[shorten >=1pt,->,draw=black, node distance=\layersep]
+    \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+    \tikzstyle{neuron}=[circle,minimum size=17pt, draw=black, inner sep=0pt]
+    \tikzstyle{input neuron}=[neuron];
+    \tikzstyle{output neuron}=[neuron];
+    \tikzstyle{hidden neuron}=[neuron];
+    \tikzstyle{annot} = [text width=5em, text centered]
+
+    \path[yshift=0.5cm] node[hidden neuron, light-gray] (I-1) at (0,-1) {};
+    \path[yshift=0.5cm] node[hidden neuron, light-gray] (I-2) at (0,-2) {};
+    
+    \path[yshift=0.5cm] node[hidden neuron] (H-1) at (\layersep,-1) {\scriptsize 0,4};
+    \path[yshift=0.5cm] node[hidden neuron] (H-2) at (\layersep,-2) {\scriptsize 0,5};
+    
+    % Draw the hidden layer nodes
+    \path[yshift=0.5cm] node[hidden neuron, pin={[pin edge={->}]right:$E_1 = 1,5$},] (O-1) at (2*\layersep,-1) {};
+    \path[yshift=0.5cm] node[hidden neuron, light-gray] (O-2) at (2*\layersep,-2) {};
+    
+    % Connect every node in the hidden layer with the output layer
+    \foreach \source in {1,...,2}
+        \foreach \dest in {1,...,2}
+            \path (I-\source) edge[light-gray] (H-\dest);
+
+    \path (H-1) edge node[pos=.1,above]{\scriptsize 2} (O-1);
+    \path (H-1) edge [light-gray] (O-2);
+    
+    \path (H-2) edge node[pos=.1,above]{\scriptsize 3} (O-1);
+    \path (H-2) edge[light-gray] (O-2);
+
+\end{tikzpicture}

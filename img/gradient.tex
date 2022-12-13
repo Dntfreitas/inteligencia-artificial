@@ -1,0 +1,29 @@
+\pgfplotsset{compat=1.11}
+\begin{tikzpicture}
+\begin{axis}[
+axis line style={shorten >=-10pt, shorten <=-10pt},
+axis y line=center,
+axis x line=middle, domain=-5:7]
+\addplot[mark=none,TolDarkBrown,domain=-5:7] {(x - 1)^2 + 1};
+\addplot+[mark=none,TolDarkRed, domain=-3:0, 
+postaction={decorate, decoration={markings,
+                mark=at position 0.105 with {\arrow[scale=2, TolDarkRed]{<};},
+                mark=at position 0.31 with {\arrow[scale=2, TolDarkRed]{<};},
+                mark=at position 0.51 with {\arrow[scale=2, TolDarkRed]{<};},
+                mark=at position 0.71 with {\arrow[scale=2, TolDarkRed]{<};},
+                 mark=at position 0.9 with {\arrow[scale=2, TolDarkRed]{<};}
+     }}
+      ] {-4*x + 1};
+\addplot+[mark=none,TolDarkRed, domain=1:4, 
+postaction={decorate, decoration={markings,
+                mark=at position 0.105 with {\arrow[scale=2, TolDarkRed]{>};},
+                mark=at position 0.31 with {\arrow[scale=2, TolDarkRed]{>};},
+                mark=at position 0.51 with {\arrow[scale=2, TolDarkRed]{>};},
+                mark=at position 0.71 with {\arrow[scale=2, TolDarkRed]{>};},
+                 mark=at position 0.9 with {\arrow[scale=2, TolDarkRed]{>};}
+     }}
+ ] {3*x - 4.25};
+        
+\end{axis}
+
+\end{tikzpicture}

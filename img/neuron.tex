@@ -1,0 +1,38 @@
+\begin{tikzpicture}[shorten >=1pt,->, node distance=\layersep]
+    \tikzstyle{every pin edge}=[<-,shorten <=2pt]
+    \tikzstyle{neuron}=[circle,draw,minimum size=25pt,inner sep=0pt]
+    \tikzstyle{output neuron}=[draw,minimum size=25pt,inner sep=0pt]
+    \tikzstyle{input neuron}=[neuron];
+    \tikzstyle{hidden neuron}=[neuron];
+    \tikzstyle{annot} = [text width=5em, text centered]
+
+    % Draw the input layer nodes
+    \node[input neuron] (I-1) at (0,-1) {$i_{1}$};
+    \node[input neuron] (I-2) at (0,-2.5) {$i_{2}$};
+    \node (I-etc) at (0,-3.5) {$\vdots$};
+    \node[input neuron] (I-3) at (0,-4.7) {$i_{j}$};
+
+
+    % Draw the hidden layer nodes
+    \foreach \name / \y in {1,...,1}
+        \path[yshift=0.cm]
+            node[hidden neuron] (H-\name) at (\layersep,-2.5 cm) {$\sum$};
+
+    % Draw the output layer node
+    \node[output neuron,pin={[pin edge={->}]right:Saída}, right of=H-1] (O) {$\phi$};
+
+    % Connect every node in the input layer with every node in the
+    % hidden layer.
+    \path (I-1) edge node[above]{$w_{1}$} (H-1);
+    \path (I-2) edge node[above]{$w_{2}$} (H-1);
+    \path (I-3) edge node[above]{$w_{j}$} (H-1);
+    
+    % Connect every node in the hidden layer with the output layer
+    \foreach \source in {1,...,1}
+        \path (H-\source) edge (O);
+
+    % Annotate the layers
+    \node[annot,above of=H-1, node distance=2.5cm] (hl) {Soma ponderada};
+    \node[annot,left of=hl] {Entrada};
+    \node[annot,right of=hl] {Função de activação};
+\end{tikzpicture}

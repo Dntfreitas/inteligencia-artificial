@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+\begin{axis}[ticks=none, xmin=-1.5, xmax=1.5, ymin=-1.5, ymax=1.5,
+axis line style={shorten >=-10pt, shorten <=-10pt},
+axis y line=center,
+axis x line=middle,
+no markers]
+
+\addplot[only marks, TolLightGreen] coordinates {(-1, 1) (1, -1)};
+\addplot[only marks, TolLightRed] coordinates {(1, 1) (-1, -1)};
+
+\node[] at (axis cs: -1, 1.2) {(0, 1)};
+\node[] at (axis cs: -1, -0.8) {(0, 0)};
+\node[] at (axis cs: 1, 1.2) {(1, 1)};
+\node[] at (axis cs: 1, -0.8) {(1, 0)};
+
+\addplot[color=TolDarkBlue, visible on=<2>]{x+0.5};
+\addplot[color=TolLightBrown, visible on=<3>]{-x+0.5};
+\addplot[color=TolLightGreen, visible on=<4>]coordinates {(0.8,1.5)(0.8,-1.5)};
+\addplot[color=TolDarkPink, visible on=<5>]coordinates {(-0.8,1.5)(-0.8,-1.5)};
+
+\end{axis}
+\end{tikzpicture}

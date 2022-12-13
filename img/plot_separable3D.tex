@@ -1,0 +1,8 @@
+\begin{tikzpicture}
+\begin{axis}[ticks=none]
+\addplot3[domain=0:1, TolDarkBrown] {(-2)*x + (-2)*y + 3};
+\addplot3[only marks, TolLightRed] coordinates {(0, 0, 0) (1, 0, 0)};
+\addplot3[only marks, TolDarkRed] coordinates {(0, 1, 0)};
+\addplot3[only marks, TolLightGreen] coordinates {(1, 1, 1)};
+\end{axis}
+\end{tikzpicture}

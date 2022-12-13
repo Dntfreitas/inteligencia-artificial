@@ -1,0 +1,30 @@
+\begin{tikzpicture}[shorten >=1pt,->,draw=black, node distance=\layersep]
+    \tikzstyle{every pin edge}=[<-,shorten <=1pt]
+    \tikzstyle{neuron}=[circle,minimum size=17pt, draw=black, inner sep=0pt]
+    \tikzstyle{input neuron}=[neuron];
+    \tikzstyle{output neuron}=[neuron];
+    \tikzstyle{hidden neuron}=[neuron];
+    \tikzstyle{annot} = [text width=5em, text centered]
+
+    % Draw the input layer nodes
+    \foreach \name / \y in {1,...,2}
+    % This is the same as writing \foreach \name / \y in {1/1,2/2,3/3,4/4}
+        \node[input neuron] (I-\name) at (0,-\y) {$i_{\y}$};
+
+    % Draw the hidden layer nodes
+    \foreach \name / \y in {1,...,2}
+        \path
+            node[hidden neuron] (H-\name) at (\layersep,-\y) {};
+
+    % Draw the output layer node
+    \node[output neuron,pin={[pin edge={->}]right:$\hat{y}$}] (O) at (2*\layersep,-1.5) {};
+
+    \path (I-1) edge node[pos=.1,above]{\scriptsize $w_1$} (H-1);
+    \path (I-1) edge node[pos=.4,above]{\scriptsize $w_2$} (H-2);
+    \path (I-2) edge node[pos=.1,above]{\scriptsize $w_3$} (H-1);
+    \path (I-2) edge node[pos=.4,above]{\scriptsize $w_4$} (H-2);
+    
+    \path (H-1) edge node[pos=.4,above]{\scriptsize $w_5$} (O);
+    \path (H-2) edge node[pos=.4,above]{\scriptsize $w_6$} (O);
+    
+\end{tikzpicture}

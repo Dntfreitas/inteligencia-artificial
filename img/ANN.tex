@@ -1,0 +1,26 @@
+\begin{tikzpicture}[shorten >=1pt,->, node distance=\layersep]
+    \tikzstyle{every pin edge}=[<-,shorten <=2pt]
+    \tikzstyle{neuron}=[circle,draw,minimum size=25pt,inner sep=0pt]
+    \tikzstyle{output neuron}=[draw,minimum size=25pt, minimum width=50pt,inner sep=0pt]
+    \tikzstyle{input neuron}=[neuron];
+    \tikzstyle{hidden neuron}=[neuron];
+    \tikzstyle{annot} = [text centered]
+
+    % Draw the input layer nodes
+    \node[input neuron] (I-1) at (0,-1) {$i_{1}$};
+    \node[input neuron] (I-2) at (0,-2.2) {$i_{2}$};
+    \node (I-etc) at (0,-3) {$\vdots$};
+    \node[input neuron] (I-3) at (0,-4) {$i_j$};
+
+    % Draw the hidden layer nodes
+    \node[output neuron ,pin={[pin edge={->}]right:Axónio}] (H-1) at (\layersep,-2.5 cm) {Neurónio};
+
+    % Connect every node in the input layer with every node in the
+    % hidden layer.
+    \path (I-1) edge node[above]{$w_{1}$} (H-1);
+    \path (I-2) edge node[above]{$w_{2}$} (H-1);
+    \path (I-3) edge node[above, xshift=-0.2cm]{$w_j$} (H-1);
+    
+    % Annotate the layers
+    \node[annot,above of=I-3, yshift=-3.5cm] (hl) {Dendrites com sinapses};
+\end{tikzpicture}

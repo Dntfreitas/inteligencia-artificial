@@ -1,0 +1,7 @@
+\begin{tikzpicture}[node distance=2cm]
+    \node (input) at (0,0) [circle_s] {\textit{Inputs}};
+    \node (regra) [circle_s, right of=input, align=center, xshift=1.5cm] {Regras};
+    \node (output) [circle_important, right of=regra, align=center, xshift=1.5cm] {\textit{Output}};
+    \draw [arrow] (input) -- (regra);
+    \draw [arrow] (regra) -- (output);
+\end{tikzpicture}

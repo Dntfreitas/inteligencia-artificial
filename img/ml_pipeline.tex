@@ -1,0 +1,18 @@
+\begin{tikzpicture}[node distance=2cm]
+    \node (data) at (0,0) [process] {Obter dados};
+    \node (preprocessing) [process, right of=data, xshift=2cm, align=center] {Pré-processamento \\ de dados};
+    \node (preparation) [process, right of=preprocessing, xshift=2cm, align=center] {Preparação \\ de dados};
+    \node (init) [process_important, right of=preparation, xshift=2cm, align=center] {Inicialização do \\ modelo};
+    \node (train) [process_important, below of=init, align=center] {Treino do \\ modelo};
+    \node (evaluate) [process_important, left of=train, xshift=-2cm,align=center] {Avaliação/validação\\ do modelo};
+    \node (hyper) [process_important, left of=evaluate,xshift=-2cm,align=center] {Ajuste de\\ hiperparâmetros};
+    \node (deploy) [process, left of=hyper, xshift=-2cm,align=center] {Utilização do\\ modelo};
+    \draw [arrow] (data) -- (preprocessing);
+    \draw [arrow] (preprocessing) -- (preparation);
+    \draw [arrow] (preparation) -- (init);
+    \draw [arrow] (init) -- (train);
+    \draw [arrow] (train) -- (evaluate);
+    \draw [arrow] (evaluate) -- (hyper);
+    \draw [arrow] (hyper) -- (deploy);
+    \draw [arrow] (hyper) |- + (0,-1) -| + (10,2) -- (init);
+  \end{tikzpicture}

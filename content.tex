@@ -1,7 +1,7 @@
 % #############################################################################
 \begin{frame}[standout]
 
-    \alert{Uma palavra que associem à Inteligência Artificial?}
+    \alert{Uma palavra que associem à Inteligência Artificial (IA)?}
     
     \tiny{Vamos começar com uma \textit{chuva de ideias}!}
     
@@ -53,7 +53,7 @@
 def is_door(object):
     if object.has_handle():
         if object.has_keyhole():
-            if object.shape == 'square':
+            if object.shape == 'cuboid':
                 if object.height >= 2 and object.width >= 0.8:
                     return True
     return False\end{lstlisting}
@@ -98,7 +98,7 @@ def is_door(object):
 
     Nesses exemplos, o nosso algoritmo \textbf{não vai retornar a resposta correcta}.
 
-    \pause
+    \pausenormal
 
      Vamos a \textbf{mais um exemplo}. Conseguiremos predizer, como base na temperatura, na humidade e no vento, se iremos ter condições favoráveis à prática de ténis\footnote{Exemplo adaptado de:  Oliveira, A., 2017. Mentes Digitais. A Ciência Redefinindo a Humanidade.}?
 
@@ -233,16 +233,20 @@ def is_door(object):
 % #############################################################################
 \begin{frame}{Introdução}
 
-    \alertbf{Onde estamos no panorama da Inteligência Artificial?}
+    \alertbf{Onde estamos no panorama da IA?}
     
     \medskip
 
     \begin{figure}
 			\centering
-			\resizebox{!}{0.65\linewidth}{
+			\resizebox{!}{0.5\linewidth}{
 				\input{img/ia_diagram}
 			}
 	\end{figure}
+
+    \medskip
+
+    A IA foi motivada pela automação de processos e resultou na Aprendizagem Automática, que corresponde à extracção de conhecimento a partir de dados.
 	
 \end{frame}
 % #############################################################################
@@ -332,13 +336,13 @@ def is_door(object):
 			\alertbf{Quarto caso:} $i_1 = i_2 = 0$, obtemos $0$.
 		\end{minipage}
 		\begin{minipage}{0.45\linewidth}
-			\alertbf{Primeiro caso:} $i_1 = i_2 = 4$
-			\begin{equation*}
+			\alertbf{Primeiro caso:} $i_1 = i_2 = 1$
+			\begin{equation}
 				\begin{split}
 					\sum_{j=1}^{2} w_j i_j &= w_1 i_1 + w_2 i_2 \\ 
 					&= 2 \times 1 + 2 \times 1 = 4.
 				\end{split}
-			\end{equation*}
+			\end{equation}
 			\textbf{Se considerarmos um limiar de 2, os \textit{outputs} vêm:}
 			\begin{table}
 				\centering
@@ -455,7 +459,7 @@ def is_door(object):
 		    
 	Podemos escrever o \textit{output} do percepção da seguinte forma:
 	\begin{equation}
-		y = (\mathbf{W} + \Delta \mathbf{W}) \cdot \mathbf{I},
+		\mathbf{y} = (\mathbf{W} + \Delta \mathbf{W}) \cdot \mathbf{I},
 	\end{equation}
 	onde $\Delta$ denota um factor de mudança.
 	
@@ -464,21 +468,21 @@ def is_door(object):
 	Assim, 
 	\begin{equation}
 		\begin{split}
-			E &= y - \hat{y} \\
+			\mathbf{E} &= \mathbf{y} - \hat{\mathbf{y}} \\
 			&= (\mathbf{W} + \Delta \mathbf{W}) \cdot \mathbf{I} - \mathbf{W} \cdot \mathbf{I} \\
 			&= (\Delta \mathbf{W}) \cdot \mathbf{I},
 		\end{split}
 	\end{equation}
 	e, desta forma, 
 	\begin{equation}
-		\Delta \mathbf{W} = \frac{E}{\mathbf{I}}.
+		\Delta \mathbf{W} = \frac{\mathbf{E}}{\mathbf{I}}.
 	\end{equation}
 		
 	\pauseskip
 	
 	Contudo, o mais comum é considerar a seguinte equação, onde $\alpha$ é conhecido como \alertbf{\textit{learning rate}} (ou \textbf{tamanho do passo}):
 	\begin{equation}
-		\Delta \mathbf{W} = \alpha \left(\frac{E}{\mathbf{I}} \right).
+		\Delta \mathbf{W} = \alpha \left(\frac{\mathbf{E}}{\mathbf{I}} \right).
 	\end{equation}
 		
 	%% Notes:
@@ -520,7 +524,7 @@ def is_door(object):
 % #############################################################################
 \begin{frame}{Introdução \cont}
 	    
-	Para exemplificar este problema, vejamos, agora, \alertbf{a porta lógica XOR}:
+	Para exemplificar esta limitação, vejamos, agora, \alertbf{a porta lógica XOR}:
 	    
 	\medskip
 	
@@ -571,7 +575,7 @@ def is_door(object):
     \textbf{\textit{E.g.}}, altura e temperatura.
 \end{exampleblock}
 
-\pause
+\pauseskip
 
 \begin{columns}
     \begin{column}{0.45\textwidth}
@@ -715,21 +719,21 @@ def is_door(object):
 	    
 	\begin{multicols}{2}
 		\centering    
-		\begin{equation*}
+		\begin{equation}
 			\mathbf{I} = \begin{bmatrix}
 			0,9\\ 
 			0,1\\ 
 			0,8
 			\end{bmatrix}.
-		\end{equation*}    	
+		\end{equation}    	
 		        
-		\begin{equation*}
+		\begin{equation}
 			\mathbf{W_{\text{in\_oc}}} = \begin{bmatrix}
 			0,9 & 0,3 & 0,4 \\ 
 			0,2 & 0,8 & 0,2 \\
 			0,1 & 0,5 & 0,6 \\
 			\end{bmatrix}.
-		\end{equation*}    	
+		\end{equation}    	
 	\end{multicols}
 	
 \end{frame}
@@ -739,7 +743,7 @@ def is_door(object):
 \begin{frame}[fragile]{\textit{Forward Propagation} \cont}
 	
 	Agora, procedemos com o \alertbf{produto interno} entre as matrizes $\mathbf{W}$ e $\mathbf{I}$. Ou seja,
-	\begin{equation*}
+	\begin{equation}
 		\mathbf{T_{\text{oc}}} = \mathbf{W_{\text{in\_oc}}} \cdot \mathbf{I} = 
 		\begin{bmatrix}
 			0,9 & 0,3 & 0,4 \\ 
@@ -758,7 +762,7 @@ def is_door(object):
 			0,42 \\ 
 			0,62 
 		\end{bmatrix},
-	\end{equation*}
+	\end{equation}
 	e, desta forma, obtém-se o valor da \textbf{função de transferência}.
 	    
 	\bigskip
@@ -824,7 +828,7 @@ O_oc = 1/(1 + np.exp(-T_oc))\end{lstlisting}
         \input{img/ANN_Deep_1}
     \end{figure}
    
-    \begin{equation*}
+    \begin{equation}
         \mathbf{T_{\text{ou}}} = \begin{bmatrix}
             0,3 & 0,7 & 0,5 \\ 
             0,6 & 0,5 & 0,2 \\ 
@@ -842,9 +846,9 @@ O_oc = 1/(1 + np.exp(-T_oc))\end{lstlisting}
             0,889\\ 
             1,255
         \end{bmatrix}.
-    \end{equation*} 
+    \end{equation} 
      
-    \begin{equation*}
+    \begin{equation}
         \mathbf{O_{\text{ou}}} = \phi (\mathbf{T_{\text{ou}}} )
         = 
         \begin{bmatrix}
@@ -852,7 +856,7 @@ O_oc = 1/(1 + np.exp(-T_oc))\end{lstlisting}
             0,709\\ 
             0,778
         \end{bmatrix}.
-    \end{equation*}
+    \end{equation}
 
 \end{frame}
 % #############################################################################
@@ -976,16 +980,16 @@ O_oc = 1/(1 + np.exp(-T_oc))\end{lstlisting}
         \medskip
         
         Vamos considerar 
-        \begin{equation*}
+        \begin{equation}
             f(x) = (x - 1)^2 + 1.
-        \end{equation*} 
+        \end{equation} 
         
         \medskip
         
         O gradiente dessa função é, assim, dado por:
-        \begin{equation*}
+        \begin{equation}
             \nabla f(x) = \dfrac{\partial f}{\partial x} = 2 (x-1).
-        \end{equation*}
+        \end{equation}
         
         \begin{figure}
             \centering
@@ -1074,7 +1078,7 @@ O_oc = 1/(1 + np.exp(-T_oc))\end{lstlisting}
     
     \pauseskip
     
-    Esta técnica é considerada um técnica de \textit{\alertbf{supervised learning}}.
+    Esta técnica é considerada uma técnica de \textit{\alertbf{supervised learning}}.
     
     %% Notes:
     \note{-- É importante salientar que esta última expressão é uma expressão genéricas dos métodos de descida. 
@@ -1100,9 +1104,9 @@ O_oc = 1/(1 + np.exp(-T_oc))\end{lstlisting}
     \pauseskip
     
     O somatório vem:
-    \begin{equation*}
+    \begin{equation}
         \sum_{j=1}^2 w_{j1} i_1 = w_{11} \times i_1 + w_{21} \times i_1 = (2 \times 0,4) + (3 \times 0,5) = 2,3. 
-    \end{equation*}
+    \end{equation}
     
     \pauseskip
     
@@ -1124,19 +1128,19 @@ O_oc = 1/(1 + np.exp(-T_oc))\end{lstlisting}
     \end{figure}
 
     Desta forma,
-    \begin{equation*}
+    \begin{equation}
         \begin{split}
              \frac{\partial E}{\partial w_{11}} &= -E_1 \times O_1 \times (1-O_1) \times {o_1}_{\; \text{(anterior)}} \\
             &= -1,5 \times 0,909 \times (1 - 0,909)\times0,4 = -0,049.
         \end{split}
-    \end{equation*}
+    \end{equation}
     
     \pauseskip
     
     Juntando tudo na equação final, e considerando um \textit{learning rate} de 0,1, temos
-    \begin{equation*}
+    \begin{equation}
         w_{11}' = w_{11} - \alpha \times \frac{\partial E}{\partial w_{11}} =  2 - 0,1 \times (-0,049) = 2,005.
-    \end{equation*}
+    \end{equation}
         
     \end{example}
 
@@ -1147,17 +1151,17 @@ O_oc = 1/(1 + np.exp(-T_oc))\end{lstlisting}
 \begin{frame}{\textit{Backpropagation} \cont}
 
 Para os restantes pesos, a expressão é semelhante, e é dada por 
-\begin{equation*}
+\begin{equation}
     \frac{\partial E}{\partial w_{jk}} = -e_k \times O_k \times (1-O_k) \times o_j,
-\end{equation*}
-onde $e_k$ é o erro que vem da retro-propagação. 
+\end{equation}
+onde $e_k$ é o erro que vem da retropropagação. 
 
 \pauseskip
 
 Contudo, no caso genérico, têm-se
-\begin{equation*}
+\begin{equation}
 	\frac{\partial E}{\partial w_{jk}} = -e_k \times \frac{\partial}{\partial w_{jk}}\phi\left(\sum_j  w_{jk} \cdot o_{j}\right)\times o_j,
-\end{equation*}
+\end{equation}
 onde $\phi$ é, tal como vimos, uma qualquer função de activação diferenciável.  
 
 \end{frame}
@@ -1196,9 +1200,9 @@ onde $\phi$ é, tal como vimos, uma qualquer função de activação diferenciá
     
     É preciso ter em atenção que:
     \begin{itemize}
-        \item \textit{mini-batches} com um \textbf{número pequeno de elementos} faz com que o algoritmo precise de \textbf{mais iterações para convergir}.
+        \item \textit{mini-batches} com um \textbf{número pequeno de registos} faz com que o algoritmo precise de \textbf{mais iterações para convergir}.
         \medskip
-        \item \textit{mini-batches} com um \textbf{número grande de elementos} faz com que o cálculo do gradiente seja \textbf{mais exacto}, contudo \textbf{mais lento}.
+        \item \textit{mini-batches} com um \textbf{número grande de registos} faz com que o cálculo do gradiente seja \textbf{mais exacto}, contudo \textbf{mais lento}.
     \end{itemize}
     
 \end{frame}
@@ -1385,7 +1389,7 @@ Na maioria dos casos, para as \textbf{camadas ocultas}, \textbf{qualquer funçã
     
     Assim, surge o conceito de \alertbf{\textit{overfitting}} e de \alertbf{\textit{underfitting}}:
     \begin{itemize}
-        \item \textbf{\textit{Overfitting}}---quando o modelo ajusta-se muito bem ao conjunto de dados de treino.
+        \item \textbf{\textit{Overfitting}}---quando o modelo se ajusta muito bem ao conjunto de dados de treino.
         \medskip
         \item \textbf{\textit{Underfitting}}---quando o modelo não se ajusta ao conjunto de dados de treino, nem de teste (modelo inadequado).
     \end{itemize}
@@ -1424,13 +1428,19 @@ Na maioria dos casos, para as \textbf{camadas ocultas}, \textbf{qualquer funçã
 % #############################################################################
 \begin{frame}{\textit{Overfitting} vs. \textit{Underfitting} \cont}
     
-    O \textbf{ponto ótimo} é ter um \textbf{equilíbrio entre \textit{overfitting} e \textit{underfitting}}.
+    O \textbf{ponto óptimo} é ter um \textbf{equilíbrio entre \textit{overfitting} e \textit{underfitting}}.
     
     \begin{figure}
         \centering
-        \includegraphics{img/estop.png}
+        \includegraphics[width=0.45\linewidth]{img/estop.png}
         \caption{Ponto óptimo para paragem (antecipada) do treino.}
     \end{figure}
+
+    \pause
+
+    \begin{exampleblock}{Paragem (antecipada) do treino:}
+        É uma técnica que consiste em interromper o treino antes que o modelo se torne excessivamente especializado nos dados de treino (\textit{overfitting}), garantindo que ainda mantenha a capacidade de generalizar bem para dados novos e não vistos (evitando \textit{underfitting}).
+    \end{exampleblock}
     
 \end{frame}
 % #############################################################################
@@ -1457,29 +1467,6 @@ Na maioria dos casos, para as \textbf{camadas ocultas}, \textbf{qualquer funçã
     Dessa forma, estamos a \alertbf{avaliar a capacidade de generalização do modelo}. 
     
     \textbf{Exemplos de métodos:} $n$-\textit{Fold Cross-Validation} e \textit{Leave-One-Out Cross-Validation}. 
-
-\end{frame}
-% #############################################################################
-
-% #############################################################################
-\section{Algumas Regras de Polegar}
-% #############################################################################
-
-% #############################################################################
-\begin{frame}{Algumas Regras de Polegar}
-
-    \alertbf{O número de neurónios na camada oculta e o número de camadas não é sabido.}
-    
-    \pauseskip
-    
-    Existem várias \textbf{regras de polegar para escolher o número de neurónios na camada oculta}, tais como:
-    \begin{itemize}
-        \item $\dfrac{2}{3}$ do número de neurónios de entrada;
-        \medskip
-        \item Menos do que o dobro do número de neurónios na camada de entrada;
-        \medskip
-        \item $\dfrac{1}{10}$ do número de exemplos usados para treinar a rede.
-    \end{itemize}
 
 \end{frame}
 % #############################################################################
@@ -1542,7 +1529,7 @@ Output---responsável por \textbf{calcular estado oculto}. No fundo, pode passar
 % #############################################################################
 \begin{frame}{CNNs}
 
-A \textbf{estrutura de uma rede Convolutional Neural Network~(CNN)} é a seguinte\footnote{\tiny{Imagem retirada de: https://developer.qualcomm.com/software/qualcomm-neural-processing-sdk/learning-resources/cnn-architectures/deep-learning-convolutional-neural-networks-computer-vision}}:
+A \textbf{estrutura de uma rede \textit{Convolutional Neural Network}~(CNN)} é a seguinte\footnote{\tiny{Imagem retirada de: https://developer.qualcomm.com/software/qualcomm-neural-processing-sdk/learning-resources/cnn-architectures/deep-learning-convolutional-neural-networks-computer-vision}}:
 
 \begin{figure}
     \centering
@@ -1576,7 +1563,7 @@ São modelos usados para aplicações de \textit{computer vision}, e \textbf{tê
 
 Uma CNN possui as seguintes camadas\footnote{\tiny{Imagens retiradas de https://www.ibm.com/cloud/learn/convolutional-neural-networks e de https://developer.qualcomm.com/software/qualcomm-neural-processing-sdk/learning-resources/cnn-architectures/deep-learning-convolutional-neural-networks-computer-vision}}:
 \begin{itemize}
-    \item \textit{\textbf{Convolutional layer}}---serve como um filtro, que é usado para extrair as \textit{features} mais importantes do elemento.
+    \item \textit{\textbf{Convolutional layer}}---serve como um filtro que é usado para extrair as \textit{features} mais importantes do elemento.
     \pause
     \item \textit{\textbf{Pooling layer}}---serve como um filtro para reduzir a dimensionalidade do problema.
 \end{itemize}
@@ -1597,7 +1584,7 @@ Uma CNN possui as seguintes camadas\footnote{\tiny{Imagens retiradas de https://
 
 \pauseskip
 
-Hoje em dia, existem \textbf{arquitecturas de redes CNN já optimizadas e prontas para serem utilizadas}. As mais conhecidas: AlexNet, GoogLeNet e ResNet.
+Actualmente, existem \textbf{arquitecturas de redes CNN já optimizadas e prontas para serem utilizadas}. As mais conhecidas: AlexNet, GoogLeNet e ResNet.
 
 \pause
 
@@ -1614,7 +1601,7 @@ Possui cinco \textit{convolutional layers} (algumas delas seguidas por uma \text
 % #############################################################################
 
 % #############################################################################
-\section{\textit{Unsupervised Learning}}
+\section{Outros Tipos de Aprendizagem}
 % #############################################################################
 
 % #############################################################################
@@ -1630,8 +1617,8 @@ No caso do \textbf{\textit{unsupervised learning}}, esse mapeamento \textbf{não
 
 Exemplos de tarefas com \textit{unsupervised learning}:
 \begin{itemize}
-    \item \textbf{\textit{Clustering}:} quando os dados são agrupados com base na sua semelhança. Por exemplo, as redes \textit{self-organizing map}.
-    \item \textbf{Redução de dimensionalidade:} quando, de todas as características dos dados, apenas são mantidas algumas. Por exemplo, \textit{autoencoder}.
+    \item \textbf{\textit{Clustering}:} quando os dados são agrupados com base na sua semelhança. Por exemplo, as redes \textit{self-organizing map} e $k$-\textit{means clustering}.
+    \item \textbf{Redução de dimensionalidade:} quando, de todas as características dos dados, apenas são mantidas algumas. Por exemplo, \textit{autoencoder} e \textit{principal component analysis}.
 \end{itemize}
 
 %% Notes:
@@ -1641,6 +1628,38 @@ Um autoencoder é uma rede neural que aprende a copiar sua entrada para sua saí
 }
 
 \end{frame}
+% #############################################################################
+
+% #############################################################################
+\begin{frame}{\textit{Reinforcement Learning}}
+
+Neste paradigma, existe um \textbf{agente que autonomamente aprende a tomar decisões, através de tentativa e erro.}
+
+\pauseskip
+
+O agente observa o estado actual do ambiente. Com base nessa observação, \textbf{selecciona uma acção} das várias possíveis. Ao executar a acção, o \textbf{ambiente muda} para um novo estado e o \textbf{agente recebe uma recompensa}, que avalia a eficácia da acção. Esta recompensa, juntamente com o novo estado do ambiente, são enviados para o agente para que este decida a próxima acção a tomar.
+
+\pauseskip
+
+O objectivo do agente é o de \textbf{aprender uma política} (\textit{i.e.}, um conjunto de ações) que leve à \textbf{maximização das recompensas}.
+
+\end{frame}
+
+% #############################################################################
+\begin{frame}{\textit{Reinforcement Learning} \cont}
+
+Geralmente, \textbf{os conjuntos de dados são dinamicamente gerados pela interacção do agente com o ambiente}, não sendo, por isso, conjuntos de dados estáticos pré-definidos (tal como nos paradigmas de \textit{supervised} e \textit{unsupervised learning}).
+
+\pauseskip
+
+Um dos mais conhecidos algoritmos de \textit{reinforcement learning} é o $q$-\textit{learning}, onde um \textbf{agente aprende a tomar decisões óptimas explorando} um ambiente e actualizando uma tabela de valores ($q$-\textit{table}) que indicam a qualidade de cada acção em diferentes estados, com base nas \textbf{recompensas recebidas e nas expectativas de recompensas futuras}.
+
+\pauseskip
+
+\textbf{Exemplos de aplicações:} jogos e robótica.
+
+\end{frame}
+
 % #############################################################################
 
 % #############################################################################
@@ -1656,6 +1675,39 @@ Um autoencoder é uma rede neural que aprende a copiar sua entrada para sua saí
             \input{img/ml_pipeline}
         }
     \end{figure}
+
+\end{frame}
+% #############################################################################
+
+% #############################################################################
+\section{Considerações Éticas em IA}
+% #############################################################################
+
+
+% #############################################################################
+\begin{frame}{Considerações Éticas em IA}
+    
+    \begin{columns}
+    \begin{column}{0.45\textwidth}
+        \metroset{block=fill}
+        \begin{alertblock}{\textit{Bias}}
+            Consiste na incorporação de decisões humanas tendenciosas ou desigualdades históricas e sociais em sistemas de IA.
+        \end{alertblock}
+    \end{column}
+    \pause
+    \begin{column}{0.45\textwidth}
+        \metroset{block=fill}
+        \begin{alertblock}{\textit{Fairness}}
+            Garante que os sistemas de IA são avaliados de forma justa, sem favorecer ou prejudicar injustamente qualquer grupo num conjunto de dados.
+        \end{alertblock}
+    \end{column}
+\end{columns}
+
+\pauseskip
+
+\alertbf{IA Explicável (Explainable AI--XAI)}
+
+Conjunto de métodos que permite aos utilizadores \textbf{entenderem as respostas que são dadas pelos sistemas de AI}, aumentando, desta forma, a confiança, a transparência e facilitando a identificação e a correcção de \textit{bias}.
 
 \end{frame}
 % #############################################################################
